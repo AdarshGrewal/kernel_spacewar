@@ -76,6 +76,28 @@
 	qcom,platform-reset-gpio = <&tlmm 44 0>;
 };
 
+&dsi_nt37701a_visionox_amoled_60hz_cmd {
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply>;
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
+	qcom,mdss-dsi-bl-min-level = <1>;
+	qcom,mdss-dsi-bl-max-level = <3515>;
+	qcom,mdss-dsi-bl-hbm-level = <4094>;
+	qcom,mdss-brightness-max-level = <255>;
+	qcom,mdss-dsi-bl-inverted-dbv;
+	qcom,platform-reset-gpio = <&tlmm 44 0>;
+};
+
+&dsi_rm692e5_visionox_amoled_120hz_cmd {
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_amoled>;
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
+	qcom,mdss-dsi-bl-min-level = <1>;
+	qcom,mdss-dsi-bl-max-level = <3515>;
+	qcom,mdss-dsi-bl-hbm-level = <4094>;
+	qcom,mdss-brightness-max-level = <255>;
+	qcom,mdss-dsi-bl-inverted-dbv;
+	qcom,platform-reset-gpio = <&tlmm 44 0>;
+};
+
 &dsi_sim_vid {
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply>;
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
@@ -85,8 +107,8 @@
 &sde_dsi {
 	vddio-supply = <&L12C>;
 	vdd-supply = <&L13C>;
-	lab-supply = <&ab_vreg>;
-	ibb-supply = <&ibb_vreg>;
-	extvdd-supply = <&pm8350b_l1>;
-	qcom,dsi-default-panel = <&dsi_r66451_amoled_144hz_cmd_cphy>;
+	/delete-property/ lab-supply;
+	/delete-property/ ibb-supply;
+	qcom,dsi-default-panel = <&dsi_rm692e5_visionox_amoled_120hz_cmd>;
+	qcom,dsi-dummy-panel = <&dsi_r66451_amoled_144hz_video_cphy>;
 };
